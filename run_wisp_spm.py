@@ -13,11 +13,11 @@ from wisp.viz import Visualize
 from wisp.io import output_dir_info, UserInput, log
 
 ### SET DIRECTORIES ###
-WORKING_DIR = os.path.dirname(os.path.abspath(__file__))
-FILE_DIR = os.path.join(WORKING_DIR, "input/")
-WRITING_DIR = os.path.join(WORKING_DIR,"tmp/")
+WORKING_DIR = os.getcwd()
 
 if __name__ == "__main__":
+    print(f'WORKING_DIR: {WORKING_DIR}')
+
     program_start_time = time.time()
 
     # get the commandline parameters
@@ -53,6 +53,7 @@ if __name__ == "__main__":
         help="The filename of the pre-computed correlation matrix to use.",
     )
     args = argparser.parse_args()
+
     parameters = UserInput()
     parameters.parameters["pdb_trajectory_filename"] = args.pdb
     parameters.parameters["user_specified_functionalized_matrix_filename"] = args.corrmat
