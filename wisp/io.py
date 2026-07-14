@@ -160,8 +160,6 @@ class UserInput:
         # what if not all required parameters have been specified?
         if (
             self.parameters["pdb_trajectory_filename"] == ""
-            or self.parameters["source_residues"] == []
-            or self.parameters["sink_residues"] == []
         ):
             print(
                 "\nYou have failed to provide all the required parameters. In its simplest form, WISP can be used like this:"
