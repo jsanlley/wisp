@@ -1,9 +1,7 @@
 import os
-import sys
 import time
 import argparse
 import numpy as np
-import textwrap
 import pickle
 from wisp.run import run_wisp
 from wisp.contexts import ContextManager
@@ -12,7 +10,7 @@ from wisp.traj import multi_threading_to_collect_data_from_frames, collect_data_
 from wisp.paths import multi_threading_find_paths, GetPaths
 from wisp.utils import GetCovarianceMatrix
 from wisp.viz import Visualize
-from wisp.io import output_dir_info, UserInfo, log
+from wisp.io import output_dir_info, UserInput, log
 
 ### SET DIRECTORIES ###
 WORKING_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -27,30 +25,31 @@ if __name__ == "__main__":
     argparser.add_argument(
         "-prmtop",
         type=str,
-        required=True,
+        required=False,
         help="Topology file in AMBER format (prmtop)",)
+    
     argparser.add_argument(
         "-nc",
         type=str,
-        required=True,
+        required=False,
         help="Trajectory file in AMBER format (nc)",
     )
     argparser.add_argument(
         "-pdb",
         type=str,
-        required=False,
+        required=True,
         help="The filename of the multi-frame PDB to analyze. Individual frames should be separated by 'END' or 'ENDMDL' lines.",
     )
     argparser.add_argument(
         "-distmat",
         type=str,
-        required=False,
+        required=True,
         help="The filename of the pre-computed distance matrix to use.",
     )
     argparser.add_argument(
         "-corrmat",
         type=str,
-        required=False,
+        required=True,
         help="The filename of the pre-computed correlation matrix to use.",
     )
     args = argparser.parse_args()

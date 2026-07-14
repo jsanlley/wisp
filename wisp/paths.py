@@ -5,7 +5,7 @@ import multiprocessing as mp
 import os
 import sys
 import time
-from collections import Collection, MutableMapping
+from collections.abc import Collection, MutableMapping
 from collections import Counter
 
 import networkx as nx
