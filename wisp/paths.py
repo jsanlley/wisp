@@ -246,7 +246,7 @@ class GetPaths:
         )
 
         # calculate the shortest path between all pairs of nodes in the graph
-        self.all_paths = self.calculate_all_shortest_paths(self.corr_matrix, G)
+        self.all_paths = self.calculate_all_shortest_paths(G)
         self.analysis_results = self.analyze_shortest_paths(self.all_paths)
 
         path = [shortest_length]
