@@ -3,6 +3,7 @@ import time
 import argparse
 import numpy as np
 import pickle
+import multiprocessing
 from wisp.run import run_wisp
 from wisp.contexts import ContextManager
 from wisp.structure import Atom, Molecule
@@ -54,6 +55,9 @@ if __name__ == "__main__":
     )
     args = argparser.parse_args()
 
+    context_manager = ContextManager(output_dir=WORKING_DIR)
+    context_manager.pdb_path = args.pdb
+    
     parameters = UserInput()
     parameters.parameters["pdb_trajectory_filename"] = args.pdb
     parameters.parameters["user_specified_functionalized_matrix_filename"] = args.corrmat
